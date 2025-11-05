@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N-CREATION | Creative Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 헤더 네비게이션 -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/n-creation logo final.png" alt="N CREATION" class="logo-img">
+            </a>
+        </div>
+        
+        <nav class="nav-desktop">
+            <ul>
+                <li><a href="about.html">about</a></li>
+                <li><a href="works.html">works</a></li>
+                <li><a href="contact.html">contact</a></li>
+            </ul>
+        </nav>
+
+        <button class="mobile-menu-btn" aria-label="메뉴">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <img src="images/n-creation logo final.png" alt="N CREATION" class="logo-img">
+            </div>
+            <button class="mobile-menu-close" aria-label="닫기">✕</button>
+        </div>
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="about.html">about</a></li>
+                <li><a href="works.html">works</a></li>
+                <li><a href="contact.html">contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- 히어로 섹션 (비디오 배경) -->
+    <section class="hero">
+        <div class="video-background">
+            <video autoplay muted loop playsinline preload="auto">
+                <source src="videos/frieze-week-clip.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">CREATIVE</span>
+                <span class="title-line">INNOVATION</span>
+                <span class="title-line">EXCELLENCE</span>
+            </h1>
+            <p class="hero-subtitle">N CREATION, CREATE THE NEXT</p>
+            <a href="#projects" class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </a>
+        </div>
+    </section>
+
+    <!-- 소개 섹션 -->
+    <section class="intro-section">
+        <div class="container">
+            <h2 class="section-title fade-in">
+                우리는 브랜드의 다음 순간을 디자인합니다
+            </h2>
+            <p class="section-description fade-in">
+                N-CREATION은 아이디어와 실행을 연결해<br>
+                브랜드의 가치를 확장하는 크리에이티브 에이전시입니다
+            </p>
+        </div>
+    </section>
+
+    <!-- 프로젝트 섹션 -->
+    <section id="projects" class="projects-section">
+        <div class="project-item">
+            <div class="project-image">
+                <video autoplay muted loop playsinline>
+                    <source src="videos/brandmarketing.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="project-info">
+                <div class="project-content">
+                    <h3 class="project-title">BRAND MARKETING</h3>
+                    <p class="project-subtitle">Product Experience</p>
+                    <p class="project-description">
+                        브랜드의 프로덕트 런칭을 위한 공간 디자인과<br>
+                        체험형 이벤트를 완성합니다
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-item reverse">
+            <div class="project-image">
+                <video autoplay muted loop playsinline>
+                    <source src="videos/digital-experience.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="project-info">
+                <div class="project-content">
+                    <h3 class="project-title">DIGITAL EXPERIENCE</h3>
+                    <p class="project-subtitle">Interactive Installation</p>
+                    <p class="project-description">
+                        기술과 예술의 융합을 통해 몰입형<br>
+                        디지털 경험 공간을 구현합니다
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="project-image">
+                <video autoplay muted loop playsinline>
+                    <source src="videos/culture.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="project-info">
+                <div class="project-content">
+                    <h3 class="project-title">CULTURE</h3>
+                    <p class="project-subtitle">Music & Arts Festival</p>
+                    <p class="project-description">
+                        브랜드 가치를 전달하는<br>
+                        다양한 문화와 트랜드를 함께 만들어갑니다
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-item reverse">
+            <div class="project-image">
+                <video autoplay muted loop playsinline>
+                    <source src="videos/HOSPITALITY.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="project-info">
+                <div class="project-content">
+                    <h3 class="project-title">HOSPITALITY</h3>
+                    <p class="project-subtitle">Brand Internal Events</p>
+                    <p class="project-description">
+                        브랜드 몰입과 조직 결속을 높이는 내부 행사,<br>
+                        VIP 케어, 리셉션 프로그램을 설계합니다
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">함께 만들어갈 프로젝트를 기다립니다</h2>
+            <a href="contact.html" class="cta-button">문의하기</a>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/n-creation logo final.png" alt="N CREATION" class="logo-img">
+            </div>
+            <div class="footer-info">
+                <p>대표: [김정희] | 사업자 등록번호: [852-86-02801]</p>
+                <p>Email: ncreation@n-creation.com | Tel: 02-2038-2959</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">개인정보처리방침</a>
+                <a href="#">이용약관</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2024 N-CREATION. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | N-CREATION</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- 헤더 네비게이션 -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/n-creation logo final.png" alt="N CREATION" class="logo-img">
+            </a>
+        </div>
+        
+        <nav class="nav-desktop">
+            <ul>
+                <li><a href="about.html">about</a></li>
+                <li><a href="works.html">works</a></li>
+                <li><a href="contact.html" class="active">contact</a></li>
+            </ul>
+        </nav>
+
+        <button class="mobile-menu-btn" aria-label="메뉴">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <img src="images/n-creation logo final.png" alt="N CREATION" class="logo-img">
+            </div>
+            <button class="mobile-menu-close" aria-label="닫기">✕</button>
+        </div>
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="about.html">about</a></li>
+                <li><a href="works.html">works</a></li>
+                <li><a href="contact.html">contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- 페이지 히어로 -->
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1 class="page-title">CONTACT</h1>
+            <p class="page-subtitle">함께 만들어갈 프로젝트를 기다립니다</p>
+        </div>
+    </section>
+
+    <!-- 연락처 섹션 -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p class="contact-description">
+                        프로젝트 문의나 협업 제안이 있으시다면<br>
+                        언제든 연락 주시기 바랍니다.
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <h3>Business Hours</h3>
+                            <p>
+                                월-금: 09:00 - 18:00<br>
+                                토·일·공휴일: 휴무
+                            </p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h3>Email</h3>
+                            <p>info@n-creation.com</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h3>Phone</h3>
+                            <p>02-2038-2959</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">이름 *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">회사명</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">이메일 *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">연락처 *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">문의 유형</label>
+                            <select id="subject" name="subject">
+                                <option value="project">프로젝트 문의</option>
+                                <option value="partnership">파트너십 문의</option>
+                                <option value="recruitment">채용 문의</option>
+                                <option value="other">기타 문의</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="message">메시지 *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="privacy" required>
+                                <span>개인정보 수집 및 이용에 동의합니다.</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">문의하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/n-creation logo final.png" alt="N CREATION" class="logo-img">
+            </div>
+            <div class="footer-info">
+                <p>대표: [김정희] | 사업자 등록번호: [852-86-02801]</p>
+                <p>Email: ncreation@n-creation.com | Tel: 02-2038-2959</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">개인정보처리방침</a>
+                <a href="#">이용약관</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2024 N-CREATION. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
