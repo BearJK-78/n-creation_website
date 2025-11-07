@@ -140,6 +140,12 @@ if (filterButtons.length > 0) {
 const portfolioModal = document.getElementById('portfolioModal');
 const portfolioModalImagesGrid = document.getElementById('portfolioModalImages');
 const portfolioModalClose = document.querySelector('.portfolio-modal-close');
+const portfolioModalPrev = document.querySelector('.portfolio-modal-prev');
+const portfolioModalNext = document.querySelector('.portfolio-modal-next');
+
+let currentImageIndex = 0;
+let totalImages = 0;
+let imagesArray = [];
 
 // 포트폴리오 아이템 클릭 시 모달 열기
 if (portfolioItems.length > 0) {
@@ -158,6 +164,8 @@ if (portfolioItems.length > 0) {
                 if (portfolioModal && portfolioModalImagesGrid) {
                     // 기존 이미지 제거
                     portfolioModalImagesGrid.innerHTML = '';
+                    imagesArray = [];
+                    currentImageIndex = 0;
                     
                     if (imageFolder) {
                         // 폴더 내 모든 이미지 로드
@@ -170,8 +178,11 @@ if (portfolioItems.length > 0) {
                         img.src = imageSrc;
                         img.alt = imageAlt;
                         portfolioModalImagesGrid.appendChild(img);
+                        imagesArray.push(img);
                     }
                     
+                    totalImages = imagesArray.length;
+                    updateModalDisplay();
                     portfolioModal.classList.add('active');
                 }
             });
@@ -184,7 +195,7 @@ function loadFolderImages(folderPath, container) {
     // game-anniversary 폴더의 경우
     if (folderPath.includes('game-anniversary')) {
         const imageFiles = [
-            'game-annive1.jpg',
+            'game-annive1.png',
             'game-annive2.jpg',
             'game-annive3.jpg',
             'game-annive4.jpg',
@@ -197,6 +208,319 @@ function loadFolderImages(folderPath, container) {
             img.alt = `Game Anniversary ${index + 1}`;
             img.loading = 'lazy';
             container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('convention_1')) {
+        // convention_1 폴더의 경우
+        const imageFiles = [
+            'newvision_1.jpg',
+            'newvision_2.jpg',
+            'newvision_3.jpg',
+            'newvision_4.jpg',
+            'newvision_5.jpg',
+            'newvision_6.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Convention ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('branding_1')) {
+        // branding_1 폴더의 경우
+        const imageFiles = [
+            'launcing_1.jpg',
+            'launcing_2.jpg',
+            'launcing_3.jpg',
+            'launcing_4.jpg',
+            'launcing_5.jpg',
+            'launcing_6.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Launcing Event ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('culture marketing_2')) {
+        // culture marketing_2 폴더의 경우
+        const imageFiles = [
+            'brief_1.jpg',
+            'brief_2.jpg',
+            'brief_3.jpg',
+            'brief_4.jpg',
+            'brief_5.jpg',
+            'brief_6.jpg',
+            'brief_7.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Game Anniversary ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('branding_2')) {
+        // branding_2 폴더의 경우
+        const imageFiles = [
+            'barundog_1.jpg',
+            'barundog_2.jpg',
+            'barundog_3.jpg',
+            'barundog_4.jpg',
+            'barundog_5.jpg',
+            'barundog_6.jpg',
+            'barundog_7.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Annual Brand Campaign ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('new vision_1')) {
+        // new vision_1 폴더의 경우
+        const imageFiles = [
+            'lexus_dealer_1.jpg',
+            'lexus_dealer_2.jpg',
+            'lexus_dealer_3.jpg',
+            'lexus_dealer_4.jpg',
+            'lexus_dealer_5.jpg',
+            'lexus_dealer_6.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Convention ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('digital experience_1')) {
+        // digital experience_1 폴더의 경우
+        const imageFiles = [
+            'reverse1999_1.jpg',
+            'reverse1999_2.jpg',
+            'reverse1999_3.jpg',
+            'reverse1999_4.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Game Anniversary ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('new vision_2')) {
+        // new vision_2 폴더의 경우
+        const imageFiles = [
+            'toyota_tb_1.jpg',
+            'toyota_tb_2.jpg',
+            'toyota_tb_3.jpg',
+            'toyota_tb_4.jpg',
+            'toyota_tb_5.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Internal Experience ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('culture marketing_3')) {
+        // culture marketing_3 폴더의 경우
+        const imageFiles = [
+            'brhr_1.jpg',
+            'brhr_2.jpg',
+            'brhr_3.jpg',
+            'brhr_4.jpg',
+            'brhr_5.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Game Collaboration ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('branding_3')) {
+        // branding_3 폴더의 경우
+        const imageFiles = [
+            'lexus_e_1.jpg',
+            'lexus_e_2.jpg',
+            'lexus_e_3.jpg',
+            'lexus_e_4.jpg',
+            'lexus_e_5.jpg',
+            'lexus_e_6.jpg',
+            'lexus_e_7.jpg',
+            'lexus_e_8.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Launcing Event ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('culture marketing_4')) {
+        // culture marketing_4 폴더의 경우
+        const imageFiles = [
+            'frieze week_1.jpg',
+            'frieze week_2.jpg',
+            'frieze week_3.jpg',
+            'frieze week_4.jpg',
+            'frieze week_5.jpg',
+            'frieze week_6.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Frieze Week ${index + 1}`;
+            img.loading = 'lazy';
+            img.onerror = function() {
+                // 이미지가 없어도 에러가 나지 않도록 처리
+                this.style.display = 'none';
+            };
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('culture marketing_5')) {
+        // culture marketing_5 폴더의 경우
+        const imageFiles = [
+            'klayton_1.jpg',
+            'klayton_2.jpg',
+            'klayton_3.jpg',
+            'klayton_4.jpg',
+            'klayton_5.jpg',
+            'klayton_6.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `KBW Week ${index + 1}`;
+            img.loading = 'lazy';
+            img.onerror = function() {
+                // 이미지가 없어도 에러가 나지 않도록 처리
+                this.style.display = 'none';
+            };
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('branding_4')) {
+        // branding_4 폴더의 경우
+        const imageFiles = [
+            'barundog_fes_1.jpg',
+            'barundog_fes_2.jpg',
+            'barundog_fes_3.jpg',
+            'barundog_fes_4.jpg',
+            'barundog_fes_5.jpg',
+            'barundog_fes_6.jpg',
+            'barundog_fes_7.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Annual Brand Campaign ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('digital experience_2')) {
+        // digital experience_2 폴더의 경우
+        const imageFiles = [
+            'lexus_dealer_2022_1.jpg',
+            'lexus_dealer_2022_2.jpg',
+            'lexus_dealer_2022_3.jpg',
+            'lexus_dealer_2022_4.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Convention-Untact ${index + 1}`;
+            img.loading = 'lazy';
+            img.classList.add('digital-experience-2-image');
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('branding_5')) {
+        // branding_5 폴더의 경우
+        const imageFiles = [
+            'oronamin_1.jpg',
+            'oronamin_2.jpg',
+            'oronamin_3.jpg',
+            'oronamin_4.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Sales Promotion ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('digital experience_3')) {
+        // digital experience_3 폴더의 경우
+        const imageFiles = [
+            'fifa_1.jpg',
+            'fifa_2.jpg',
+            'fifa_3.jpg',
+            'fifa_4.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `Game Showcase-Untact ${index + 1}`;
+            img.loading = 'lazy';
+            container.appendChild(img);
+            imagesArray.push(img);
+        });
+    } else if (folderPath.includes('digital experience_4')) {
+        // digital experience_4 폴더의 경우
+        const imageFiles = [
+            'jyp_esg_1.jpg',
+            'jyp_esg_2.jpg',
+            'jyp_esg_3.jpg',
+            'jyp_esg_4.jpg',
+            'jyp_esg_5.jpg',
+            'jyp_esg_6.jpg',
+            'jyp_esg_7.jpg'
+        ];
+        
+        imageFiles.forEach((filename, index) => {
+            const img = document.createElement('img');
+            img.src = `${folderPath}/${filename}`;
+            img.alt = `ESG Presentation ${index + 1}`;
+            img.loading = 'lazy';
+            img.onerror = function() {
+                this.style.display = 'none';
+            };
+            container.appendChild(img);
+            imagesArray.push(img);
         });
     } else {
         // 다른 폴더의 경우 기본 이미지 표시
@@ -208,16 +532,52 @@ function loadFolderImages(folderPath, container) {
             img.src = imageSrc;
             img.alt = imageAlt;
             container.appendChild(img);
+            imagesArray.push(img);
         }
     }
 }
 
-// 단일 이미지 추가 시에도 클릭 이벤트 추가
-if (portfolioModalImagesGrid) {
-    // 동적으로 추가되는 이미지에 대해 이벤트 위임
-    portfolioModalImagesGrid.addEventListener('click', (e) => {
-        if (e.target.tagName === 'IMG') {
-            openImageLightbox(e.target.src, e.target.alt);
+// 모달 표시 업데이트 함수
+function updateModalDisplay() {
+    // 모든 이미지 숨기기
+    imagesArray.forEach((img, index) => {
+        if (index >= currentImageIndex && index < currentImageIndex + 3) {
+            img.style.display = 'block';
+        } else {
+            img.style.display = 'none';
+        }
+    });
+    
+    // 네비게이션 버튼 표시/숨김 (3개 이상일 때만)
+    if (totalImages > 3) {
+        if (portfolioModalPrev) {
+            portfolioModalPrev.classList.toggle('visible', currentImageIndex > 0);
+        }
+        if (portfolioModalNext) {
+            portfolioModalNext.classList.toggle('visible', currentImageIndex < totalImages - 3);
+        }
+    } else {
+        if (portfolioModalPrev) portfolioModalPrev.classList.remove('visible');
+        if (portfolioModalNext) portfolioModalNext.classList.remove('visible');
+    }
+}
+
+// 이전 버튼 클릭
+if (portfolioModalPrev) {
+    portfolioModalPrev.addEventListener('click', () => {
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+            updateModalDisplay();
+        }
+    });
+}
+
+// 다음 버튼 클릭
+if (portfolioModalNext) {
+    portfolioModalNext.addEventListener('click', () => {
+        if (currentImageIndex < totalImages - 3) {
+            currentImageIndex++;
+            updateModalDisplay();
         }
     });
 }
@@ -354,18 +714,6 @@ if (contactForm) {
             });
     });
 }
-
-// ===========================
-// Apply Button (채용 공고 지원)
-// ===========================
-const applyButtons = document.querySelectorAll('.apply-btn');
-
-applyButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // 실제로는 지원 페이지로 이동하거나 모달을 열 수 있습니다
-        alert('채용 지원 페이지로 이동합니다. careers@n-creation.com으로 이력서를 보내주세요.');
-    });
-});
 
 // ===========================
 // Video Autoplay (비디오 자동 재생 보장)
@@ -553,4 +901,5 @@ window.addEventListener('load', () => {
 // });
 
 console.log('N-CREATION website loaded successfully!');
+
 

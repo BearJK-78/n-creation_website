@@ -336,9 +336,9 @@ a {
     margin: 0 auto;
     line-height: 1.2;
     text-align: center;
-    white-space: nowrap;
     display: block;
-    width: fit-content;
+    max-width: 90%;
+    padding: 0 20px;
 }
 
 /* ===========================
@@ -892,28 +892,98 @@ a {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 20px;
     padding: 10px;
-    overflow: visible;
+    overflow: hidden;
+    position: relative;
+    background: #000;
 }
 
 .portfolio-modal-images-grid img {
     width: 100%;
-    height: 100%;
-    min-height: 200px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+    height: auto;
+    min-height: 350px;
+    max-height: 500px;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    object-position: center;
     border-radius: 10px;
-    cursor: pointer;
-    transition: var(--transition);
+    cursor: default;
+    transition: transform 0.3s ease;
     border: none;
     outline: none;
     display: block;
+    pointer-events: none;
+    background: #000;
 }
 
 .portfolio-modal-images-grid img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: none;
+    box-shadow: none;
+}
+
+/* digital experience_2 폴더 이미지 스타일 - 비율 유지 */
+.portfolio-modal-images-grid img.digital-experience-2-image {
+    aspect-ratio: auto;
+    object-fit: contain;
+    max-height: 500px;
+    width: 100%;
+    height: auto;
+}
+
+/* 모달 네비게이션 버튼 */
+.portfolio-modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--secondary-color);
+    font-size: 48px;
+    font-weight: 300;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 10003;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    line-height: 1;
+    padding: 0;
+    text-align: center;
+}
+
+.portfolio-modal-nav .nav-arrow-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    object-fit: contain;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.portfolio-modal-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.portfolio-modal-nav:hover .nav-arrow-icon {
+    filter: brightness(0) saturate(100%) invert(48%) sepia(100%) saturate(2000%) hue-rotate(0deg) brightness(110%) contrast(100%);
+}
+
+.portfolio-modal-nav.visible {
+    display: flex;
+}
+
+.portfolio-modal-prev {
+    left: 20px;
+}
+
+.portfolio-modal-next {
+    right: 20px;
 }
 
 /* 단일 이미지인 경우 (기존 호환성) */
@@ -958,7 +1028,31 @@ a {
     }
 
     .portfolio-modal-images-grid img {
-        min-height: 180px;
+        min-height: 280px;
+        max-height: 380px;
+        aspect-ratio: 4 / 3;
+    }
+    
+    .portfolio-modal-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 40px;
+        line-height: 1;
+        padding: 0;
+        text-align: center;
+    }
+    
+    .portfolio-modal-nav .nav-arrow-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .portfolio-modal-prev {
+        left: 10px;
+    }
+    
+    .portfolio-modal-next {
+        right: 10px;
     }
 
     .portfolio-modal-image-container {
@@ -986,13 +1080,37 @@ a {
     }
 
     .portfolio-modal-images-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
         padding: 5px;
     }
 
     .portfolio-modal-images-grid img {
-        min-height: 150px;
+        min-height: 200px;
+        max-height: 280px;
+        aspect-ratio: 4 / 3;
+    }
+    
+    .portfolio-modal-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 36px;
+        line-height: 1;
+        padding: 0;
+        text-align: center;
+    }
+    
+    .portfolio-modal-nav .nav-arrow-icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .portfolio-modal-prev {
+        left: 5px;
+    }
+    
+    .portfolio-modal-next {
+        right: 5px;
     }
 
     .portfolio-modal-image-container {
@@ -1244,173 +1362,6 @@ a {
     align-items: center;
     justify-content: center;
     color: var(--medium-gray);
-}
-
-/* ===========================
-   Careers 페이지
-   =========================== */
-.careers-intro {
-    padding: 100px 0;
-    text-align: center;
-}
-
-.benefits-section {
-    padding: 100px 0;
-    background: var(--light-gray);
-}
-
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-top: 60px;
-}
-
-.benefit-item {
-    padding: 40px;
-    background: var(--secondary-color);
-    border-radius: 10px;
-    text-align: center;
-    transition: var(--transition);
-}
-
-.benefit-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.benefit-icon {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-.benefit-item h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.benefit-item p {
-    color: var(--medium-gray);
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-/* 채용 공고 */
-.jobs-section {
-    padding: 100px 0;
-}
-
-.jobs-list {
-    max-width: 900px;
-    margin: 60px auto 0;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.job-item {
-    padding: 40px;
-    background: var(--light-gray);
-    border-radius: 10px;
-    transition: var(--transition);
-}
-
-.job-item:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.job-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
-
-.job-header h3 {
-    font-size: 24px;
-    margin-bottom: 8px;
-}
-
-.job-type {
-    color: var(--medium-gray);
-    font-size: 14px;
-}
-
-.apply-btn {
-    padding: 12px 30px;
-    background: var(--primary-color);
-    color: var(--secondary-color);
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.apply-btn:hover {
-    background: var(--accent-color);
-}
-
-.job-description {
-    color: var(--text-color);
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-.job-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.tag {
-    padding: 6px 15px;
-    background: var(--secondary-color);
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-/* 지원 안내 */
-.apply-section {
-    padding: 100px 0;
-    background: var(--light-gray);
-}
-
-.apply-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-    margin-top: 60px;
-}
-
-.apply-step {
-    text-align: center;
-}
-
-.step-number {
-    width: 80px;
-    height: 80px;
-    background: var(--primary-color);
-    color: var(--secondary-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: 700;
-    margin: 0 auto 20px;
-}
-
-.apply-step h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.apply-step p {
-    color: var(--medium-gray);
-    font-size: 14px;
-    line-height: 1.6;
 }
 
 /* ===========================
@@ -1713,21 +1664,17 @@ a {
         grid-template-columns: 1fr;
     }
 
-    .job-header {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .apply-steps {
-        grid-template-columns: 1fr;
-    }
-
-    .benefits-grid {
-        grid-template-columns: 1fr;
-    }
 
     .footer-content {
         grid-template-columns: 1fr;
+    }
+
+    .portfolio-info h3 {
+        font-size: 20px;
+    }
+
+    .portfolio-info p {
+        font-size: 16px;
     }
 }
 
@@ -1797,18 +1744,43 @@ a {
         padding: 30px 20px;
     }
 
-    .about-item,
-    .benefit-item {
+    .about-item {
         padding: 30px 20px;
     }
 
-    .job-item {
-        padding: 30px 20px;
-    }
 
     .submit-btn {
         width: 100%;
         justify-self: stretch;
+    }
+
+    .container,
+    .container-fluid {
+        padding: 0 20px;
+    }
+
+    .filter-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 12px 18px;
+        font-size: 14px;
+    }
+
+    .portfolio-info h3 {
+        font-size: 18px;
+    }
+
+    .portfolio-info p {
+        font-size: 14px;
+    }
+
+    .category-tag {
+        font-size: 11px;
+        padding: 6px 14px;
     }
 }
 
