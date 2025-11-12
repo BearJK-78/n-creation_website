@@ -220,7 +220,7 @@ a {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding-top: 200px;
+    padding-top: 160px;
     background: #000;
 }
 
@@ -258,11 +258,13 @@ a {
     z-index: 10;
     text-align: center;
     color: var(--secondary-color);
-    margin-bottom: 100px;
+    margin-bottom: 80px;
+    max-width: 900px;
+    padding: 0 24px;
 }
 
 .hero-title {
-    font-size: clamp(56px, 10vw, 140px);
+    font-size: clamp(48px, 7vw, 110px);
     font-weight: 900;
     line-height: 1.15;
     margin-bottom: 40px;
@@ -283,7 +285,7 @@ a {
 }
 
 .hero-subtitle {
-    font-size: clamp(18px, 2.5vw, 28px);
+    font-size: clamp(18px, 2vw, 24px);
     font-weight: 400;
     letter-spacing: 1px;
     animation: fadeInUp 1s ease 0.6s both;
@@ -305,14 +307,14 @@ a {
    페이지 히어로 (서브 페이지)
    =========================== */
 .page-hero {
-    height: 60vh;
+    min-height: 55vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: var(--secondary-color);
     text-align: center;
-    padding-top: 200px;
+    padding: 140px 20px 100px;
     margin-top: 0;
 }
 
@@ -322,7 +324,7 @@ a {
 }
 
 .page-title {
-    font-size: clamp(64px, 9vw, 120px);
+    font-size: clamp(56px, 7vw, 96px);
     font-weight: 900;
     letter-spacing: -3px;
     margin: 0 auto 0;
@@ -332,7 +334,7 @@ a {
 }
 
 .page-subtitle {
-    font-size: clamp(32px, 4vw, 56px);
+    font-size: clamp(28px, 3.4vw, 42px);
     font-weight: 400;
     letter-spacing: 0.3px;
     margin: 0 auto;
@@ -362,7 +364,7 @@ a {
    섹션 공통
    =========================== */
 .section-title {
-    font-size: clamp(32px, 5vw, 56px);
+    font-size: clamp(28px, 4vw, 46px);
     font-weight: 800;
     letter-spacing: -1.5px;
     margin-bottom: 40px;
@@ -372,7 +374,7 @@ a {
 }
 
 .section-description {
-    font-size: clamp(22px, 2.8vw, 32px);
+    font-size: clamp(20px, 2.4vw, 26px);
     color: var(--medium-gray);
     text-align: center;
     margin-bottom: 80px;
@@ -382,7 +384,7 @@ a {
 }
 
 .large-text {
-    font-size: clamp(22px, 3vw, 36px);
+    font-size: clamp(20px, 2.5vw, 30px);
     line-height: 1.5;
     color: var(--text-color);
     text-align: center;
@@ -397,7 +399,7 @@ a {
    소개 섹션
    =========================== */
 .intro-section {
-    padding: 150px 0;
+    padding: 110px 0;
     background: var(--secondary-color);
     position: relative;
     z-index: 1;
@@ -457,12 +459,12 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px;
+    padding: 50px;
     background: var(--secondary-color);
 }
 
 .project-title {
-    font-size: clamp(36px, 5vw, 56px);
+    font-size: clamp(32px, 4vw, 44px);
     font-weight: 800;
     letter-spacing: -0.5px;
     margin-bottom: 20px;
@@ -470,14 +472,14 @@ a {
 }
 
 .project-subtitle {
-    font-size: clamp(18px, 2.2vw, 24px);
+    font-size: clamp(18px, 1.8vw, 22px);
     color: var(--accent-color);
     margin-bottom: 25px;
     font-weight: 600;
 }
 
 .project-description {
-    font-size: clamp(20px, 2.2vw, 26px);
+    font-size: clamp(18px, 1.8vw, 22px);
     line-height: 2;
     color: var(--medium-gray);
 }
@@ -541,7 +543,7 @@ a {
 }
 
 .about-item h3 {
-    font-size: 28px;
+    font-size: 24px;
     margin: 30px 40px 15px;
     font-weight: 700;
     position: relative;
@@ -552,8 +554,8 @@ a {
 
 .about-item p {
     color: var(--medium-gray);
-    line-height: 1.5;
-    font-size: 20px;
+    line-height: 1.6;
+    font-size: 18px;
     position: relative;
     z-index: 1;
     word-break: keep-all;
@@ -641,7 +643,7 @@ a {
 }
 
 .team-category h3 {
-    font-size: 22px;
+    font-size: 20px;
     margin: 30px 30px 15px;
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -652,7 +654,7 @@ a {
 
 .team-category p {
     color: var(--medium-gray);
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.5;
     letter-spacing: -0.2px;
     word-break: keep-all;
@@ -1235,7 +1237,7 @@ a {
    Contact 페이지
    =========================== */
 .contact-section {
-    padding: 120px 0;
+    padding: 110px 0;
     background: var(--light-gray);
 }
 
@@ -1410,14 +1412,14 @@ a {
 }
 
 .cta-title {
-    font-size: clamp(32px, 5vw, 56px);
+    font-size: clamp(28px, 4vw, 46px);
     font-weight: 800;
     margin-bottom: 40px;
 }
 
 .cta-button {
     display: inline-block;
-    padding: 20px 60px;
+    padding: 18px 48px;
     background: var(--secondary-color);
     color: var(--primary-color);
     font-size: 18px;

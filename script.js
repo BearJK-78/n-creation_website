@@ -146,6 +146,35 @@ const portfolioModalNext = document.querySelector('.portfolio-modal-next');
 let currentImageIndex = 0;
 let totalImages = 0;
 let imagesArray = [];
+let imagesPerView = getImagesPerView();
+
+function getImagesPerView() {
+    const isPortraitMobile = window.innerWidth <= 768 && window.matchMedia('(orientation: portrait)').matches;
+    return isPortraitMobile ? 1 : 3;
+}
+
+function applyModalLayout() {
+    if (portfolioModalImagesGrid) {
+        portfolioModalImagesGrid.style.gridTemplateColumns = `repeat(${imagesPerView}, 1fr)`;
+    }
+}
+
+function handleModalLayoutChange() {
+    const newImagesPerView = getImagesPerView();
+    if (newImagesPerView !== imagesPerView) {
+        imagesPerView = newImagesPerView;
+        applyModalLayout();
+        if (totalImages > 0) {
+            currentImageIndex = Math.min(currentImageIndex, Math.max(0, totalImages - imagesPerView));
+            updateModalDisplay();
+        }
+    } else {
+        applyModalLayout();
+    }
+}
+
+window.addEventListener('resize', handleModalLayoutChange);
+window.addEventListener('orientationchange', handleModalLayoutChange);
 
 // 포트폴리오 아이템 클릭 시 모달 열기
 if (portfolioItems.length > 0) {
@@ -182,6 +211,8 @@ if (portfolioItems.length > 0) {
                     }
                     
                     totalImages = imagesArray.length;
+                    imagesPerView = getImagesPerView();
+                    applyModalLayout();
                     updateModalDisplay();
                     portfolioModal.classList.add('active');
                 }
@@ -541,7 +572,7 @@ function loadFolderImages(folderPath, container) {
 function updateModalDisplay() {
     // 모든 이미지 숨기기
     imagesArray.forEach((img, index) => {
-        if (index >= currentImageIndex && index < currentImageIndex + 3) {
+        if (index >= currentImageIndex && index < currentImageIndex + imagesPerView) {
             img.style.display = 'block';
         } else {
             img.style.display = 'none';
@@ -549,12 +580,12 @@ function updateModalDisplay() {
     });
     
     // 네비게이션 버튼 표시/숨김 (3개 이상일 때만)
-    if (totalImages > 3) {
+    if (totalImages > imagesPerView) {
         if (portfolioModalPrev) {
             portfolioModalPrev.classList.toggle('visible', currentImageIndex > 0);
         }
         if (portfolioModalNext) {
-            portfolioModalNext.classList.toggle('visible', currentImageIndex < totalImages - 3);
+            portfolioModalNext.classList.toggle('visible', currentImageIndex < totalImages - imagesPerView);
         }
     } else {
         if (portfolioModalPrev) portfolioModalPrev.classList.remove('visible');
@@ -575,7 +606,7 @@ if (portfolioModalPrev) {
 // 다음 버튼 클릭
 if (portfolioModalNext) {
     portfolioModalNext.addEventListener('click', () => {
-        if (currentImageIndex < totalImages - 3) {
+        if (currentImageIndex < totalImages - imagesPerView) {
             currentImageIndex++;
             updateModalDisplay();
         }
