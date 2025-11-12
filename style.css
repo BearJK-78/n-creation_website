@@ -51,6 +51,7 @@ a {
     left: 0;
     width: 100%;
     padding: 20px 60px;
+    padding-top: calc(20px + env(safe-area-inset-top, 0px));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,6 +64,7 @@ a {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     padding: 15px 60px;
+    padding-top: calc(15px + env(safe-area-inset-top, 0px));
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -239,7 +241,7 @@ a {
     height: 100%;
     object-fit: cover;
     opacity: 0.85;
-    transform: scale(1.08);
+    transform: scale(1.12);
     transform-origin: center;
 }
 
@@ -1597,10 +1599,12 @@ a {
 @media (max-width: 768px) {
     .header {
         padding: 20px 30px;
+        padding-top: calc(20px + env(safe-area-inset-top, 0px));
     }
 
     .header.scrolled {
         padding: 15px 30px;
+        padding-top: calc(15px + env(safe-area-inset-top, 0px));
     }
 
     .nav-desktop {
@@ -1762,6 +1766,7 @@ a {
 @media (max-width: 480px) {
     .header {
         padding: 15px 20px;
+        padding-top: calc(15px + env(safe-area-inset-top, 0px));
     }
 
     .logo-img {
@@ -1790,10 +1795,12 @@ a {
     
     .header {
         padding: 20px 20px;
+        padding-top: calc(20px + env(safe-area-inset-top, 0px));
     }
     
     .header.scrolled {
         padding: 15px 20px;
+        padding-top: calc(15px + env(safe-area-inset-top, 0px));
     }
 
     .hero {
