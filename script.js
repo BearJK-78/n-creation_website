@@ -680,10 +680,14 @@ if (imageLightbox) {
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
+    const emailjsPublicKey = contactForm.dataset.emailjsPublicKey?.trim();
+    const emailjsServiceId = contactForm.dataset.emailjsService?.trim();
+    const emailjsTemplateId = contactForm.dataset.emailjsTemplate?.trim();
+
     // EmailJS 초기화 (Public Key는 EmailJS 계정에서 발급받은 값으로 변경 필요)
     // EmailJS가 로드된 후에만 초기화
-    if (typeof emailjs !== 'undefined') {
-        emailjs.init("YOUR_PUBLIC_KEY"); // EmailJS 대시보드에서 발급받은 Public Key로 변경
+    if (typeof emailjs !== 'undefined' && emailjsPublicKey) {
+        emailjs.init(emailjsPublicKey); // EmailJS 대시보드에서 발급받은 Public Key로 변경
     }
 
     contactForm.addEventListener('submit', (e) => {
@@ -695,9 +699,20 @@ if (contactForm) {
             return;
         }
 
+        if (!emailjsPublicKey || !emailjsServiceId || !emailjsTemplateId) {
+            alert('이메일 전송 설정이 비어 있습니다. EmailJS Public Key, Service ID, Template ID를 설정해주세요.');
+            return;
+        }
+
+        const submitButton = contactForm.querySelector('.submit-btn');
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = '전송 중...';
+        }
+
         // EmailJS를 사용한 이메일 전송
         // Service ID와 Template ID는 EmailJS 대시보드에서 확인 후 변경 필요
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', contactForm)
+        emailjs.sendForm(emailjsServiceId, emailjsTemplateId, contactForm)
             .then(function(response) {
                 console.log('이메일 전송 성공!', response.status, response.text);
                 
@@ -706,11 +721,19 @@ if (contactForm) {
                 
                 // 폼 초기화
                 contactForm.reset();
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = '문의하기';
+                }
             }, function(error) {
                 console.log('이메일 전송 실패:', error);
                 
                 // 실패 메시지 표시
                 alert('문의 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주시거나 직접 이메일로 문의해주세요.');
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = '문의하기';
+                }
             });
     });
 }
