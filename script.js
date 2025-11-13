@@ -846,15 +846,19 @@ navLinks.forEach(link => {
 // Parallax Effect for Hero Section
 // ===========================
 const heroSection = document.querySelector('.hero');
+const heroBackground = document.querySelector('.video-background');
+const heroContent = document.querySelector('.hero-content');
 
-if (heroSection) {
+if (heroSection && heroBackground && heroContent) {
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        const parallaxSpeed = 0.5;
+        const backgroundSpeed = 0.12;
+        const contentSpeed = 0.28;
+        const limitedScroll = Math.min(scrolled, window.innerHeight);
         
-        if (scrolled < window.innerHeight) {
-            heroSection.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
-        }
+        // 배경과 콘텐츠를 함께 이동
+        heroBackground.style.transform = `translateY(${limitedScroll * backgroundSpeed}px)`;
+        heroContent.style.transform = `translateY(${limitedScroll * contentSpeed}px)`;
     });
 }
 
