@@ -157,6 +157,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         initModalEscapeKey();
     }, 100);
     
+    // 모바일 메뉴 초기화 (헤더 로드 완료 후)
+    setTimeout(() => {
+        if (typeof window.initMobileMenu === 'function') {
+            window.initMobileMenu();
+        }
+    }, 150);
+    
     // 기존 script.js의 기능들이 로드된 후 실행되도록 보장
     if (typeof window.initComponents === 'function') {
         window.initComponents();

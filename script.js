@@ -19,32 +19,143 @@ window.addEventListener('scroll', () => {
 // ===========================
 // 모바일 메뉴
 // ===========================
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const mobileMenu = document.querySelector('.mobile-menu');
-const mobileMenuClose = document.querySelector('.mobile-menu-close');
-const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+let mobileMenuInitialized = false;
 
-if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
+function initMobileMenu() {
+    // 이미 초기화된 경우 중복 방지
+    if (mobileMenuInitialized) {
+        return;
+    }
+
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+    if (!mobileMenuBtn || !mobileMenu) {
+        // 요소가 아직 로드되지 않은 경우 재시도
+        setTimeout(initMobileMenu, 100);
+        return;
+    }
+
+    // 초기화 완료 표시
+    mobileMenuInitialized = true;
+
+    // 메뉴 열기/닫기 함수
+    const openMenu = (e) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        if (!mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    const closeMenu = (e) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        if (mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    // 햄버거 버튼 이벤트 (모바일 터치와 데스크톱 클릭 모두 지원)
+    // 터치 이벤트와 클릭 이벤트 중복 방지를 위한 플래그
+    let touchHandled = false;
+    
+    mobileMenuBtn.addEventListener('touchstart', (e) => {
+        touchHandled = true;
+        e.stopPropagation();
+        openMenu(e);
+        // 클릭 이벤트가 발생하지 않도록 짧은 시간 후 플래그 리셋
+        setTimeout(() => {
+            touchHandled = false;
+        }, 300);
+    }, { passive: false });
+    
+    mobileMenuBtn.addEventListener('click', (e) => {
+        // 터치 이벤트가 처리된 경우 클릭 이벤트 무시
+        if (touchHandled) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+        }
+        e.stopPropagation();
+        openMenu(e);
     });
+
+    // 닫기 버튼 이벤트
+    if (mobileMenuClose) {
+        let closeTouchHandled = false;
+        
+        mobileMenuClose.addEventListener('touchstart', (e) => {
+            closeTouchHandled = true;
+            e.stopPropagation();
+            closeMenu(e);
+            setTimeout(() => {
+                closeTouchHandled = false;
+            }, 300);
+        }, { passive: false });
+        
+        mobileMenuClose.addEventListener('click', (e) => {
+            if (closeTouchHandled) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
+            e.stopPropagation();
+            closeMenu(e);
+        });
+    }
+
+    // 모바일 메뉴 링크 클릭 시 메뉴 닫기
+    mobileNavLinks.forEach(link => {
+        // 링크는 클릭 이벤트에서만 메뉴를 닫도록 (링크 이동이 제대로 작동하도록)
+        link.addEventListener('click', (e) => {
+            // 링크 이동은 허용하고, 메뉴만 닫기
+            setTimeout(() => closeMenu(), 100);
+        });
+    });
+
+    // 모바일 메뉴 배경 클릭/터치 시 닫기
+    mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+            closeMenu(e);
+        }
+    });
+    
+    mobileMenu.addEventListener('touchstart', (e) => {
+        if (e.target === mobileMenu) {
+            e.stopPropagation();
+            closeMenu(e);
+        }
+    }, { passive: false });
+    
+    // ESC 키로 메뉴 닫기
+    const handleEscapeKey = (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            closeMenu(e);
+        }
+    };
+    document.addEventListener('keydown', handleEscapeKey);
 }
 
-if (mobileMenuClose) {
-    mobileMenuClose.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-}
+// 초기화 함수를 전역으로 노출 (loadComponents.js에서 호출 가능하도록)
+window.initMobileMenu = initMobileMenu;
 
-// 모바일 메뉴 링크 클릭 시 메뉴 닫기
-mobileNavLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
+// DOMContentLoaded 시에도 시도 (이미 로드된 경우 대비)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initMobileMenu, 200);
     });
-});
+} else {
+    setTimeout(initMobileMenu, 200);
+}
 
 // ===========================
 // Smooth Scroll
